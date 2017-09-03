@@ -1,0 +1,15 @@
+{
+  "name": "actions-on-aws",
+  "version": "1.0.0",
+  "description": "Call action-on-google SDK from an AWS lambda",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "actions-on-google": "^1.2.1",
+    "node-mocks-http": "^1.6.4"
+  }
+}
