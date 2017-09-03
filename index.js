@@ -1,15 +1,15 @@
-let Assistant = require("actions-on-google").ApiAiApp;
-let expressMockery = require("node-mocks-http");
+var Assistant = require("actions-on-google").ApiAiApp;
+var expressMockery = require("node-mocks-http");
 
-exports.handler = (event, context, callback) => {
+exports.handler = function(event, context, callback) {
 
-    // With the bespoken proxy the event is the payload. In your lambda it is different!
-    let assistant = getAssistant(event);
+    // With the bespoken proxy the event is the payload. In your lambda it is very likely different!
+    var assistant = getAssistant(event);
 
     // Do your thing ...
     assistant.tell("We fooled Google! Yay! Check out the bespoken tools!")
 
-    let response = JSON.stringify(assistant.response_._getData());
+    var response = JSON.stringify(assistant.response_._getData());
 
     callback(null, response);
 };
@@ -17,11 +17,11 @@ exports.handler = (event, context, callback) => {
 function getAssistant(requestBody) {
 
     // Prep the request and response.
-    let mockRequest = expressMockery.createRequest({
+    var mockRequest = expressMockery.createRequest({
         body: requestBody
     });
 
-    let mockResponse = expressMockery.createResponse();
+    var mockResponse = expressMockery.createResponse();
 
     // We need this monkey patch because node-mocks-http doesn't have the append.
     mockResponse["append"] = (header, value) => {
